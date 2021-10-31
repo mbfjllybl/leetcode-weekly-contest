@@ -1,43 +1,55 @@
 package problem3;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Solution {
-    public int[] f = new int[1001];
-    public int[] tmp;
-
-    public int get(int x) {
-        if (f[x] != -1) return f[x];
-        int res = Integer.MAX_VALUE;
-        for (int i = 0; i < tmp.length; i++) {
-            if (judge(x + tmp[i])) res = Math.min(res, 1 + get(x + tmp[i]));
-            if (judge(x - tmp[i])) res = Math.min(res, 1 + get(x - tmp[i]));
-            if (judge(x ^ tmp[i])) res = Math.min(res, 1 + get(x ^ tmp[i]));
-        }
-        f[x] = res;
-        return f[x];
-    }
-
-    boolean judge(int x) {
-        if (x >= 0 && x <= 1000) return true;
-        else return false;
-    }
+    int dist[] = new int[1001];
     public int minimumOperations(int[] nums, int start, int goal) {
-        for (int i = 0; i <= 1000; i++) {
-            f[i] = -1;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(start);
+        Arrays.fill(dist, -1);
+        dist[start] = 0;
+        while (queue.size() != 0) {
+            int top = queue.poll();
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] + top >= 0 && nums[i] + top <= 1000 && dist[nums[i] + top] == -1) {
+                    dist[nums[i] + top] = dist[top] + 1;
+                    queue.offer(nums[i] + top);
+                }
+            }
+            for (int i = 0; i < nums.length; i++) {
+                if (-nums[i] + top >= 0 && -nums[i] + top <= 1000 && dist[-nums[i] + top] == -1) {
+                    dist[-nums[i] + top] = dist[top] + 1;
+                    queue.offer(-nums[i] + top);
+                }
+            }
+            for (int i = 0; i < nums.length; i++) {
+                if ((nums[i] ^ top) >= 0 && (nums[i] ^ top) <= 1000 && dist[nums[i] ^ top] == -1) {
+                    dist[nums[i] ^ top] = dist[top] + 1;
+                    queue.offer(nums[i] ^ top);
+                }
+            }
         }
 
-        tmp = nums;
-        f[start] = 0;
+        if (goal >= 0 && goal <= 1000) return dist[goal];
+
         int res = Integer.MAX_VALUE;
+        for (int i : nums) {
+            int v = i + goal;
+            if (v >= 0 && v <= 1000 && dist[v] != -1) res = Math.min(res, dist[v] + 1);
 
-        if (judge(goal)) return get(goal);
+            v = -i + goal;
+            if (v >= 0 && v <= 1000 && dist[v] != -1) res = Math.min(res, dist[v] + 1);
 
-        for (int i = 0; i < nums.length; i++) {
-            if (judge(goal + nums[i])) res = Math.min(res, 1 + get(goal + nums[i]));
-            if (judge(goal - nums[i])) res = Math.min(res, 1 + get(goal - nums[i]));
-            if (judge(goal ^ nums[i])) res = Math.min(res, 1 + get(goal ^ nums[i]));
+            v = i ^ goal;
+            if (v >= 0 && v <= 1000 && dist[v] != -1) res = Math.min(res, dist[v] + 1);
         }
 
         if (res == Integer.MAX_VALUE) return -1;
         else return res;
+
     }
 }
