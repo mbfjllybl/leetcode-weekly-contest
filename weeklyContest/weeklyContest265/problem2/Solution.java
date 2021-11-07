@@ -1,4 +1,4 @@
-package problem2;
+package weeklyContest265.problem2;
 
 import java.awt.*;
 import java.util.ArrayDeque;
@@ -16,14 +16,13 @@ import java.util.List;
  * }
  */
 
-
 class ListNode {
     int val;
     ListNode next;
     ListNode() {}
     ListNode(int val) { this.val = val; }
     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
+ }
 
 class Solution {
     public int[] nodesBetweenCriticalPoints(ListNode head) {

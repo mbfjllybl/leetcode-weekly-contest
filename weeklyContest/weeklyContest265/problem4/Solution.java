@@ -1,4 +1,4 @@
-package problem4;
+package weeklyContest265.problem4;
 
 class Solution {
     public boolean[][][] f = new boolean[41][41][2001];

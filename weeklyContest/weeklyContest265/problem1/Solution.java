@@ -1,4 +1,4 @@
-package problem1;
+package weeklyContest265.problem1;
 
 class Solution {
     public int smallestEqual(int[] nums) {
