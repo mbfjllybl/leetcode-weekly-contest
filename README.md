@@ -1,7 +1,5 @@
 # leetcode-weekly-contest
 
----
-
 > weekly-contest-269 [AK]
 >
 > Date of 2021-11-28
@@ -85,4 +83,3 @@
 |  3   | [转化数字的最小运算数](https://leetcode-cn.com/problems/minimum-operations-to-convert-number/) |    BFS    | [Java](https://github.com/mbfjllybl/leetcode-weekly-contest/blob/master/weeklyContest/weeklyContest265/problem3/Solution.java) |   Medium   | :heavy_multiplication_x: |
 |  4   | [同源字符串检测](https://leetcode-cn.com/problems/check-if-an-original-string-exists-given-two-encoded-strings/) |    DP     | [Java](https://github.com/mbfjllybl/leetcode-weekly-contest/blob/master/weeklyContest/weeklyContest265/problem4/Solution.java) |    Hard    | :heavy_multiplication_x: |
 
----
