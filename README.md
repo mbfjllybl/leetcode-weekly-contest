@@ -1,5 +1,9 @@
 # leetcode-weekly-contest
 
+**My leetcode rate summary.** Contains leetcode-weekly-contest and leetcode-biweekly-contest. Comment with my rating and yes or not AK. QAQ
+
+---
+
 > weekly-contest-269 [AK]
 >
 > Date of 2021-11-28
